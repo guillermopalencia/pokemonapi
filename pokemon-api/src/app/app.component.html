@@ -1,6 +1,9 @@
-<div>
-  <h1>Welcome to PokemonAPI</h1>
-  <p *ngFor='let pokemon of pokemon'>
+
+  <h1>Pokeverse</h1>
+
+<div *ngFor='let pokemon of pokemon.results; let i = index' [attr.id]="pokemon.id">
+  <img src="{{url}}{{i+1}}.png">
+  <p>
     {{pokemon.name}}
   </p>
 </div>

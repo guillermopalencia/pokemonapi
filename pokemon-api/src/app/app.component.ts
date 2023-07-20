@@ -13,17 +13,22 @@ export class AppComponent implements OnInit{
 
   title = 'pokemon-api';
 
+  url=`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/`
+
+
   ngOnInit(){ 
     let headers = new HttpHeaders({
       'x-rapidapi-host': 'random-facts2.p.rapidapi.com',
 			'x-rapidapi-key': 'your-api-key'
     })
     this.http
-        .get<any>(' https://pokeapi.co/api/v2/pokemon?limit=151', {
+        .get<any>(' https://pokeapi.co/api/v2/pokemon?offset=0&limit=151', {
           headers: headers
         })
         .subscribe(pokemonData => {
-          this.pokemon = pokemonData.results
+          this.pokemon = pokemonData
+          console.log(pokemonData.results)
         })
   }
+    
 }
